@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Journal</string>
+    <string name="content">Content</string>
+    <string name="title">Title</string>
+    <string name="submit">Submit!</string>
+    <string name="timestamp">timestamp</string>
 </resources>
