@@ -13,7 +13,8 @@
         android:clickable="true"
         app:srcCompat="@android:drawable/ic_input_add"
         android:layout_gravity="bottom|end"
-        android:focusable="true" />
+        android:focusable="true"
+        android:onClick="FloatingActionButtonClicked"/>
 
     <ListView
         android:layout_width="match_parent"
