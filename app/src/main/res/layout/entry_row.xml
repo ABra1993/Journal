@@ -30,20 +30,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/Mood"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="@string/mood"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/moodRow"
-        app:layout_constraintTop_toBottomOf="@+id/titleRow" />
-
-    <TextView
-        android:id="@+id/Timestamp"
+        android:id="@+id/timestamp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -53,5 +40,5 @@
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/moodRow"
-        app:layout_constraintTop_toBottomOf="@+id/Mood" />
+        app:layout_constraintTop_toBottomOf="@+id/titleRow" />
 </android.support.constraint.ConstraintLayout>
