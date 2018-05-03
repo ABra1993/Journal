@@ -3,41 +3,17 @@ package example.promo.journal;
 import java.io.Serializable;
 
 public class JournalEntry implements Serializable {
-    private int id, drawableMood, timestamp;
-    private String title, content;
+    /** The following class stores a journal entry and contains getters and setters for the variables
+     * title, timestamp, content and mood. */
 
-    public JournalEntry(int id, int drawableMood, int timestamp, String title, String content) {
-        this.id = id;
-        this.drawableMood = drawableMood;
-        this.timestamp = timestamp;
+    // initializes properties...
+    private String title, timestamp, content, drawableMood;
+
+    // constructor
+    public JournalEntry(String title, String content, String drawableMood, String timestamp) {
         this.title = title;
         this.content = content;
-    }
-
-    // getter and setter for id
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    // getter and setter for drawableMood
-    public int getDrawableMood() {
-        return drawableMood;
-    }
-
-    public void setDrawableMood(int drawableMood) {
         this.drawableMood = drawableMood;
-    }
-
-    // getter and setter for timestamp
-    public int getTimestamp() {
-        return timestamp;
-    }
-
-    public void setTimestamp(int timestamp) {
         this.timestamp = timestamp;
     }
 
@@ -57,5 +33,23 @@ public class JournalEntry implements Serializable {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    // getter and setter for drawableMood
+    public String getDrawableMood() {
+        return drawableMood;
+    }
+
+    public void setDrawableMood(String drawableMood) {
+        this.drawableMood = drawableMood;
+    }
+
+    // getter and setter for timestamp
+    public String getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(String timestamp) {
+        this.timestamp = timestamp;
     }
 }
