@@ -1,6 +1,8 @@
 package example.promo.journal;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
+import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -13,16 +15,95 @@ public class InputActivity extends AppCompatActivity {
     /** The following class retrieves user's input and adds a new journal entry to SQL database. */
 
     // initializes properties...
-    String drawableMood;
-    String addFavourites;
+    private String drawableMood;
+    private String addFavourites;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_input);
-        ImageView favourites = findViewById(R.id.favourites);
-        favourites.setVisibility(View.INVISIBLE);
+        ImageView favouritesRestore = findViewById(R.id.favourites);
+        favouritesRestore.setVisibility(View.INVISIBLE);
     }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        /** Saves info in bundle. */
+        super.onSaveInstanceState(outState);
+
+        // stores favorites in bundle
+        ImageView favourites = findViewById(R.id.favourites);
+        switch (favourites.getVisibility()) {
+            case View.VISIBLE:
+                addFavourites = "yes";
+                outState.putBoolean("visibility", true);
+                break;
+            case View.INVISIBLE:
+                addFavourites = "no";
+                outState.putBoolean("visibility", false);
+                break;
+        }
+
+        System.out.println("Mood is " + drawableMood);
+
+        // stores mood in bundle
+        if (drawableMood != null) switch(drawableMood) {
+            case "positive":
+                outState.putString("mood", "positive");
+                break;
+            case "neutral":
+                outState.putString("mood", "neutral");
+                break;
+            case "negative":
+                outState.putString("mood", "negative");
+                break;
+            case "sad":
+                outState.putString("mood", "sad");
+                break;
+        }
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle inState) {
+        /** Restores info saved on bundle. */
+        super.onRestoreInstanceState(inState);
+
+        // retrieves image view favourites
+        ImageView favouritesRestore = findViewById(R.id.favourites);
+        if (inState.getBoolean("visibility")) {
+            favouritesRestore.setVisibility(View.VISIBLE);
+        } else {
+            favouritesRestore.setVisibility(View.INVISIBLE);
+        }
+
+        // retrieves image view mood
+        ImageView mood = findViewById(R.id.mood);
+        mood.setVisibility(View.VISIBLE);
+
+        String moodString = inState.getString("mood");
+        System.out.println("Mood is " + moodString);
+        if (moodString != null) {
+            switch (moodString) {
+                case "positive":
+                    mood.setImageResource(R.drawable.positive);
+                    drawableMood = "positive";
+                    break;
+                case "neutral":
+                    mood.setImageResource(R.drawable.neutral);
+                    drawableMood = "neutral";
+                    break;
+                case "negative":
+                    mood.setImageResource(R.drawable.negative);
+                    drawableMood = "negative";
+                    break;
+                case "sad":
+                    mood.setImageResource(R.drawable.sad);
+                    drawableMood = "sad";
+                    break;
+            }
+        }
+    }
+
 
     public void addEntry(View view) {
 
@@ -92,5 +173,7 @@ public class InputActivity extends AppCompatActivity {
         } else {
             favourites.setVisibility(View.VISIBLE);
         }
+
+        System.out.println(drawableMood);
     }
 }
