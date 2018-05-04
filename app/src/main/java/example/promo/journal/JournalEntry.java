@@ -7,14 +7,15 @@ public class JournalEntry implements Serializable {
      * title, timestamp, content and mood. */
 
     // initializes properties...
-    private String title, timestamp, content, drawableMood;
+    private String title, timestamp, content, drawableMood, favourites;
 
     // constructor
-    public JournalEntry(String title, String content, String drawableMood, String timestamp) {
+    public JournalEntry(String title, String content, String drawableMood, String timestamp, String favourites) {
         this.title = title;
         this.content = content;
         this.drawableMood = drawableMood;
         this.timestamp = timestamp;
+        this.favourites = favourites;
     }
 
     // getter and setter for title
@@ -51,5 +52,14 @@ public class JournalEntry implements Serializable {
 
     public void setTimestamp(String timestamp) {
         this.timestamp = timestamp;
+    }
+
+    // getter and setter for favourites
+    public String getFavourites() {
+        return favourites;
+    }
+
+    public void setFavourites(String favourites) {
+        this.favourites = favourites;
     }
 }

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class InputActivity extends AppCompatActivity {
@@ -13,6 +14,7 @@ public class InputActivity extends AppCompatActivity {
 
     // initializes properties...
     String drawableMood;
+    String addFavourites;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +28,12 @@ public class InputActivity extends AppCompatActivity {
         EntryDatabase instance = EntryDatabase.getInstance(this);
 
         // retrieves input data from view
+        ImageView favourites = findViewById(R.id.addFavourites);
+        if (favourites.getVisibility() == View.VISIBLE) {
+            addFavourites = "yes";
+        } else {
+            addFavourites = "no";
+        }
         View parentView = (View) view.getParent();
         EditText titleView = parentView.findViewById(R.id.titleSubmit);
         EditText contentView = parentView.findViewById(R.id.contentSubmit);
@@ -34,7 +42,7 @@ public class InputActivity extends AppCompatActivity {
         String timeStamp = new java.text.SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
 
         // creates new journal entry
-        JournalEntry journalEntry = new JournalEntry(title, content, drawableMood, timeStamp);
+        JournalEntry journalEntry = new JournalEntry(title, content, drawableMood, timeStamp, addFavourites);
 
         // insert journal entry in table
         instance.insert(journalEntry);
@@ -47,22 +55,40 @@ public class InputActivity extends AppCompatActivity {
     // retrieves and stores emoticon the user has clicked on
     public void emoticonClicked(View view) {
 
-        ImageButton mood;
-        int moodClickedOn = R.id.neutralMood;
+        ImageView mood = findViewById(R.id.mood);
 
         switch(view.getId()) {
             case R.id.positiveMood:
                 drawableMood = "positive";
+                mood.setImageResource(R.drawable.positive);
+                mood.setVisibility(View.VISIBLE);
                 break;
             case R.id.neutralMood:
                 drawableMood = "neutral";
+                mood.setImageResource(R.drawable.neutral);
+                mood.setVisibility(View.VISIBLE);
                 break;
             case R.id.negativeMood:
                 drawableMood = "negative";
+                mood.setImageResource(R.drawable.negative);
+                mood.setVisibility(View.VISIBLE);
                 break;
             case R.id.sadMood:
                 drawableMood = "sad";
+                mood.setImageResource(R.drawable.sad);
+                mood.setVisibility(View.VISIBLE);
                 break;
+        }
+    }
+
+    public void addFavourites(View view) {
+
+        ImageView favourites = findViewById(R.id.addFavourites);
+
+        if (favourites.getVisibility() == View.VISIBLE) {
+            favourites.setVisibility(View.INVISIBLE);
+        } else {
+            favourites.setVisibility(View.VISIBLE);
         }
     }
 }

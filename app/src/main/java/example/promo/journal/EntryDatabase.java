@@ -32,7 +32,7 @@ public class EntryDatabase extends SQLiteOpenHelper {
     // creates table
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table entries ( _id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, content TEXT, mood TEXT, timestamp TEXT);");
+        db.execSQL("create table entries ( _id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, content TEXT, mood TEXT, timestamp TEXT, favourites TEXT);");
         String timeStamp = new java.text.SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
         db.execSQL("INSERT INTO entries (title, content, mood, timestamp) VALUES ('Good day', 'University', 'positive', '" + timeStamp + "');");
     }
@@ -62,6 +62,7 @@ public class EntryDatabase extends SQLiteOpenHelper {
         contentValues.put("content", entry.getContent());
         contentValues.put("mood", entry.getDrawableMood());
         contentValues.put("timestamp", entry.getTimestamp());
+        contentValues.put("favourites", entry.getFavourites());
 
         // inserts content values in table
         db.insert(DB_NAME, null, contentValues);

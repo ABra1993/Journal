@@ -34,6 +34,20 @@ public class EntryAdapter extends ResourceCursorAdapter{
         TextView timestamp = view.findViewById(R.id.timestamp);
         timestamp.setText(timestampRow);
 
+        // retrieves favourites from database and shows it in main activity
+        columnIndex = cursor.getColumnIndex("favourites");
+        String favouritesRow = cursor.getString(columnIndex);
+        ImageView starView = view.findViewById(R.id.favourites);
+        switch (favouritesRow) {
+            case "yes":
+                starView.setVisibility(View.VISIBLE);
+                break;
+            case "no":
+                starView.setVisibility(View.INVISIBLE);
+                break;
+        }
+
+
         // retrieves mood from database and shows it in main activity
         columnIndex = cursor.getColumnIndex("mood");
         String moodRow =  cursor.getString(columnIndex);
