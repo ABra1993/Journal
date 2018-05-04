@@ -5,4 +5,5 @@
     <string name="submit">Submit!</string>
     <string name="timestamp">timestamp</string>
     <string name="mood">Mood</string>
+    <string name="add_as_favourite">Add as favourite</string>
 </resources>

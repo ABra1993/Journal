@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 public class EntryAdapter extends ResourceCursorAdapter{
     /** The following class binds view of main activity to the adapter and shows the title,
-     * timestamp and mood of the journal entries. */
+     * timestamp and mood of the journal entries in the main activity. */
 
     // constructor
     public EntryAdapter(Context context, Cursor cursor, int layout, int flags) {
@@ -47,24 +47,27 @@ public class EntryAdapter extends ResourceCursorAdapter{
                 break;
         }
 
-
         // retrieves mood from database and shows it in main activity
         columnIndex = cursor.getColumnIndex("mood");
         String moodRow =  cursor.getString(columnIndex);
         ImageView imageView = view.findViewById(R.id.moodRow);
-        switch(moodRow) {
-            case "positive":
-                imageView.setImageResource(R.drawable.positive);
-                break;
-            case "neutral":
-                imageView.setImageResource(R.drawable.neutral);
-                break;
-            case "negative":
-                imageView.setImageResource(R.drawable.negative);
-                break;
-            case "sad":
-                imageView.setImageResource(R.drawable.sad);
-                break;
+        if (moodRow != null) {
+            switch (moodRow) {
+                case "positive":
+                    imageView.setImageResource(R.drawable.positive);
+                    break;
+                case "neutral":
+                    imageView.setImageResource(R.drawable.neutral);
+                    break;
+                case "negative":
+                    imageView.setImageResource(R.drawable.negative);
+                    break;
+                case "sad":
+                    imageView.setImageResource(R.drawable.sad);
+                    break;
+                    }
+            } else {
+            imageView.setImageResource(R.drawable.negative);
         }
     }
 }

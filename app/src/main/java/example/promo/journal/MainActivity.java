@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
             Bundle bundle = new Bundle();
 
             // stores info of journal entry
-            String[] titles = new String[]{"title", "timestamp", "content", "mood"};
+            String[] titles = new String[]{"title", "timestamp", "content", "mood", "favourites"};
             for (String title : titles) {
                 int columnIndex = cursor.getColumnIndex(title);
                 bundle.putString(title, cursor.getString(columnIndex));

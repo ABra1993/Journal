@@ -1,32 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".InputActivity">
 
-    <EditText
-        android:id="@+id/titleSubmit"
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        android:hint="@string/title"
-        android:textSize="30sp"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:textColorHighlight ="#ff0000"/>
+        android:orientation="horizontal"
+        android:paddingTop="10dp">
+
+        <EditText
+            android:id="@+id/titleSubmit"
+            android:layout_width="574dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:ems="10"
+            android:hint="@string/title"
+            android:inputType="textPersonName"
+            android:textColorHighlight="#ff0000"
+            android:textSize="30sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </LinearLayout>
 
     <EditText
         android:id="@+id/contentSubmit"
         android:layout_width="match_parent"
-        android:layout_height="178dp"
+        android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
@@ -40,69 +48,100 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/titleSubmit" />
 
-    <ImageButton
-        android:id="@+id/sadMood"
-        android:layout_width="85dp"
-        android:layout_height="85dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="92dp"
-        android:layout_weight="1"
-        android:onClick="emoticonClicked"
-        android:scaleType="centerCrop"
-        app:layout_constraintBottom_toTopOf="@+id/submit"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/sad" />
 
-    <ImageButton
-        android:id="@+id/negativeMood"
-        android:layout_width="85dp"
-        android:layout_height="85dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="8dp"
-        android:layout_weight="1"
-        android:onClick="emoticonClicked"
-        android:scaleType="centerCrop"
-        app:layout_constraintBottom_toTopOf="@+id/submit"
-        app:layout_constraintEnd_toStartOf="@+id/sadMood"
-        app:layout_constraintHorizontal_bias="0.918"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/negative" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
 
-    <ImageButton
-        android:id="@+id/neutralMood"
-        android:layout_width="85dp"
-        android:layout_height="85dp"
-        android:layout_marginBottom="16dp"
-        android:layout_marginEnd="92dp"
-        android:layout_marginTop="16dp"
-        android:layout_weight="1"
-        android:onClick="emoticonClicked"
-        android:scaleType="centerCrop"
-        app:layout_constraintBottom_toTopOf="@+id/sadMood"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/contentSubmit"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/neutral" />
+        <CheckBox
+            android:id="@+id/checkBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/add_as_favourite"
+            android:onClick="addFavourites"/>
 
-    <ImageButton
-        android:id="@+id/positiveMood"
-        android:layout_width="85dp"
-        android:layout_height="85dp"
-        android:layout_marginBottom="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_weight="1"
-        android:onClick="emoticonClicked"
-        android:scaleType="centerCrop"
-        app:layout_constraintBottom_toTopOf="@+id/negativeMood"
-        app:layout_constraintEnd_toStartOf="@+id/neutralMood"
-        app:layout_constraintHorizontal_bias="0.918"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/contentSubmit"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/positive" />
+        <ImageView
+            android:id="@+id/favourites"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            app:srcCompat="@drawable/favourites"
+            android:scaleType="centerCrop"
+            android:visibility="invisible"
+            android:paddingLeft="2dp"
+            android:paddingRight="2dp"
+            android:paddingTop="2dp"
+            android:paddingBottom="2dp"/>
+
+        <ImageView
+            android:id="@+id/mood"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            app:srcCompat="@drawable/neutral"
+            android:visibility="invisible"
+            android:paddingStart="4dp"
+            android:paddingEnd="8dp"
+            android:paddingTop="2dp"
+            android:paddingBottom="2dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center_horizontal">
+
+        <ImageButton
+            android:id="@+id/sadMood"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:onClick="emoticonClicked"
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/sad"
+            android:background="#00000000" />
+
+        <ImageButton
+            android:id="@+id/negativeMood"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:onClick="emoticonClicked"
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/negative"
+            android:background="#00000000" />
+
+        <ImageButton
+            android:id="@+id/neutralMood"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:onClick="emoticonClicked"
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/neutral"
+            android:background="#00000000" />
+
+        <ImageButton
+            android:id="@+id/positiveMood"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:onClick="emoticonClicked"
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/positive"
+            android:background="#00000000" />
+
+    </LinearLayout>
 
     <Button
         android:id="@+id/submit"
@@ -117,4 +156,4 @@
         app:layout_constraintStart_toStartOf="parent"
         android:onClick="addEntry" />
 
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>

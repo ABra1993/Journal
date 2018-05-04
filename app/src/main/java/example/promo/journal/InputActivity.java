@@ -20,6 +20,8 @@ public class InputActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_input);
+        ImageView favourites = findViewById(R.id.favourites);
+        favourites.setVisibility(View.INVISIBLE);
     }
 
     public void addEntry(View view) {
@@ -28,7 +30,7 @@ public class InputActivity extends AppCompatActivity {
         EntryDatabase instance = EntryDatabase.getInstance(this);
 
         // retrieves input data from view
-        ImageView favourites = findViewById(R.id.addFavourites);
+        ImageView favourites = findViewById(R.id.favourites);
         if (favourites.getVisibility() == View.VISIBLE) {
             addFavourites = "yes";
         } else {
@@ -83,7 +85,7 @@ public class InputActivity extends AppCompatActivity {
 
     public void addFavourites(View view) {
 
-        ImageView favourites = findViewById(R.id.addFavourites);
+        ImageView favourites = findViewById(R.id.favourites);
 
         if (favourites.getVisibility() == View.VISIBLE) {
             favourites.setVisibility(View.INVISIBLE);
